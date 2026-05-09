@@ -1,26 +1,120 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ── Fonts ─────────────────────────────────── */
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+
+  /* ── Primary (green) scale ──────────────────── */
+  --color-primary-50:  #f0faf4;
+  --color-primary-100: #dcf3e6;
+  --color-primary-200: #bbe6ce;
+  --color-primary-300: #8ed2ae;
+  --color-primary-400: #5ab788;
+  --color-primary-500: #359b6a;
+  --color-primary-600: #257d53;
+  --color-primary-700: #1a6b3c;
+  --color-primary-800: #185535;
+  --color-primary-900: #14452c;
+  --color-primary:     #1a6b3c;
+
+  /* ── Secondary (gold) scale ─────────────────── */
+  --color-secondary-50:  #fdf9ee;
+  --color-secondary-100: #faf1d3;
+  --color-secondary-200: #f4e0a3;
+  --color-secondary-300: #ecc96a;
+  --color-secondary-400: #e4b240;
+  --color-secondary-500: #d99929;
+  --color-secondary-600: #c9a84c;
+  --color-secondary-700: #a37a1e;
+  --color-secondary-800: #85601d;
+  --color-secondary-900: #6e4f1c;
+  --color-secondary:     #c9a84c;
+
+  /* ── Semantic colors ────────────────────────── */
+  --color-accent:      #e8f5ee;
+  --color-background:  #fdfaf5;
+  --color-foreground:  #1c1c1e;
+  --color-muted:       #6b7280;
+
+  /* ── Animations ─────────────────────────────── */
+  --animate-fade-in:  fadeIn  0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.4s ease-out;
+  --animate-slide-in: slideIn 0.3s ease-out;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fdfaf5;
+  color: #1c1c1e;
+  font-family: var(--font-inter), system-ui, sans-serif;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-family: var(--font-playfair), Georgia, serif;
+  color: #1c1c1e;
+}
+
+/* Rich text editor styles */
+.ProseMirror {
+  outline: none;
+  min-height: 200px;
+  padding: 12px;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #9ca3af;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Lightbox overlay */
+.lightbox-overlay {
+  animation: fadeIn 0.2s ease;
+}
+
+/* Tour content tabs */
+.tab-content {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
